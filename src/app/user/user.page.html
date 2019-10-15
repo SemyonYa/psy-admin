@@ -1,9 +1,12 @@
-<ion-header>
+<ion-header [routerLink]="['/user/list']">
   <ion-toolbar>
-    <ion-title>user</ion-title>
+    <ion-title>
+      USERS
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<h2 *ngFor="let user of users">{{user.login}}</h2>
+  <!-- <h2 *ngFor="let user of users">{{user.login}}</h2> -->
+  <ion-router-outlet></ion-router-outlet>
 </ion-content>

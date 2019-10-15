@@ -24,8 +24,8 @@ export class AppComponent {
     },
     {
       title: 'Users',
-      url: '/user',
-      icon: 'list'
+      url: '/user/list',
+      icon: 'people'
     }
   ];
 

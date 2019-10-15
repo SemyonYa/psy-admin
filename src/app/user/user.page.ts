@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { User } from '../models/user';
+import { IMenuItem } from '../models/imenu-item';
 
 @Component({
   selector: 'app-user',
@@ -8,14 +9,14 @@ import { User } from '../models/user';
   styleUrls: ['./user.page.scss'],
 })
 export class UserPage implements OnInit {
-  users: User[] = [];
+  menu: Set<IMenuItem> = new Set<IMenuItem>();
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.getUsers()
-    .subscribe((data: User[]) => {
-      this.users = data;
-    });
+    this.menu
+      .add({ link: '/user/list', title: 'Список' })
+      .add({ link: '/user/create', title: 'Создать' })
+      .add({ link: '/user/view', title: 'Просмотр' });
   }
 
 }
