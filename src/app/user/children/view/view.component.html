@@ -1,3 +1,19 @@
-<p>
-  view works!
-</p>
+<div *ngIf="user" class="wrap">
+  <h3>{{user.organizationName}}</h3>
+  <pre>{{user | json}}</pre>
+  
+  <h4>Пользователи организации</h4>
+  <!-- <ion-icon name="person-add"></ion-icon> -->
+  <table>
+    <tr>
+      <td>a</td>
+      <td>b</td>
+      <td>c</td>
+    </tr>
+    <tr *ngFor="let child of children">
+        <td>{{child.login}}</td>
+        <td>{{child.organizationName}}</td>
+        <td>{{child.parentUserId}}</td>
+      </tr>
+  </table>
+</div>

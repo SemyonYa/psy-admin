@@ -5,14 +5,18 @@ import { UserPage } from './user.page';
 import { CreateComponent } from './children/create/create.component';
 import { ViewComponent } from './children/view/view.component';
 import { ListComponent } from './children/list/list.component';
+import { EditComponent } from './children/edit/edit.component';
+import { BlockedListComponent } from './children/blocked-list/blocked-list.component';
 
 const userRoutes: Routes = [
   {
     path: 'user', component: UserPage,
     children: [
       { path: 'list', component: ListComponent },
+      { path: 'blocked-list', component: BlockedListComponent },
       { path: 'create', component: CreateComponent },
-      { path: 'view', component: ViewComponent }
+      { path: 'edit/:id', component: EditComponent },
+      { path: 'view/:id', component: ViewComponent }
     ]
   }
 ];

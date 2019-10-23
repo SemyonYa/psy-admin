@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { DataService } from 'src/app/services/data.service';
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-create',
@@ -8,12 +11,25 @@ import { NgForm } from '@angular/forms';
 })
 export class CreateComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
 
-  ngOnInit() {}
+  constructor(private dataService: DataService, private router: Router) { }
 
-  submitForm(form: NgForm) {
-    console.log(form);
+  ngOnInit() {
+    this.form = User.createForm();
+  }
+
+  submitForm() {
+    if (this.form.valid) {
+      this.dataService.newUser(this.form.value)
+        .subscribe(
+          answer => {
+            if (answer != false) {
+              this.router.navigate(['/user/list']);
+            }
+          }
+          );
+    }
   }
 
 }

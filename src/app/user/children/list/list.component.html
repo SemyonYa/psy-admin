@@ -1,11 +1,14 @@
 <div class="wrap">
-  <a [routerLink]="'/user/create'">Новый пользователь</a>
+  <p>
+    <a class="button" [routerLink]="'/user/create'">Новый пользователь</a>
+    <a class="button" [routerLink]="'/user/blocked-list'">Список заблокированных пользователей</a>
+  </p>
   <table>
-    <tr *ngFor="let user of fakeUsers">
-      <td>{{user}}</td>
+    <tr *ngFor="let user of users">
+      <td>{{user.login}}</td>
       <td>
-        <ion-icon name="eye" (click)="view(user)"></ion-icon>
-        <ion-icon name="create" (click)="edit(user)"></ion-icon>
+        <ion-icon name="eye" [routerLink]="['/user/view/' + user.id]"></ion-icon>
+        <ion-icon name="create" (click)="edit(user.id)"></ion-icon>
       </td>
     </tr>
   </table>
