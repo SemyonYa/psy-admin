@@ -10,6 +10,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UserPageModule } from './user/user.module';
+import { IonicStorageModule } from '@ionic/storage';
+import { DataService } from './services/data.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,12 +22,15 @@ import { UserPageModule } from './user/user.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    UserPageModule
+    UserPageModule,
+    IonicStorageModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    DataService
   ],
   bootstrap: [AppComponent]
 })

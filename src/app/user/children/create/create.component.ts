@@ -7,7 +7,7 @@ import { User } from 'src/app/models/user';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss'],
+  styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
 
@@ -25,6 +25,7 @@ export class CreateComponent implements OnInit {
         .subscribe(
           answer => {
             if (answer != false) {
+              this.dataService.getUsers();
               this.router.navigate(['/user/list']);
             }
           }

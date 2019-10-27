@@ -3,13 +3,38 @@
     <a class="button" [routerLink]="'/user/create'">Новый пользователь</a>
     <a class="button" [routerLink]="'/user/blocked-list'">Список заблокированных пользователей</a>
   </p>
-  <table>
-    <tr *ngFor="let user of users">
-      <td>{{user.login}}</td>
-      <td>
-        <ion-icon name="eye" [routerLink]="['/user/view/' + user.id]"></ion-icon>
-        <ion-icon name="create" (click)="edit(user.id)"></ion-icon>
-      </td>
-    </tr>
-  </table>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <table>
+          <thead>
+            <tr>
+              <td>№</td>
+              <td>ID</td>
+              <td>Организация</td>
+              <td>Логин</td>
+              <td>E-mail</td>
+              <td>Телефон</td>
+              <td>Кол-во</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tr *ngFor="let user of users | async; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{user.id}}</td>
+            <td>{{user.organizationName}}</td>
+            <td>{{user.login}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.specialistsQuantity}}</td>
+            <td>
+              <ion-icon name="eye" [routerLink]="['/user/view/' + user.id]"></ion-icon>
+              <ion-icon name="create" (click)="edit(user.id)"></ion-icon>
+              <ion-icon name="key" (click)="openResetPasswordModal(user.id, user.organizationName)"></ion-icon>
+            </td>
+          </tr>
+        </table>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </div>

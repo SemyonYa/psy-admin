@@ -2,6 +2,7 @@
   <h3>Редактирование</h3>
   <form *ngIf="form" [formGroup]="form" (ngSubmit)="submitForm()">
     <input type="hidden" formControlName="id" />
+    <input type="hidden" formControlName="role" />
     <div class="form-group">
       <label>Наименование организации</label>
       <input type="text" formControlName="organizationName" />
@@ -9,6 +10,11 @@
     <div class="form-group">
       <label>E-mail</label>
       <input type="text" formControlName="email" />
+      <!-- <p *ngIf="form.email."></p> -->
+    </div>
+    <div class="form-group">
+      <label>Телефон</label>
+      <input type="text" formControlName="phone" />
       <!-- <p *ngIf="form.email."></p> -->
     </div>
     <div class="form-group">

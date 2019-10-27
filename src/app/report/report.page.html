@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Отчёты</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="report-list">
+    <ion-card color="primary" *ngFor="let r of [1, 2, 3, 4]">
+      <ion-card-header>
+        <ion-card-subtitle>This is report #{{r}}</ion-card-subtitle>
+        <ion-card-title>Report {{r}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, sunt.
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

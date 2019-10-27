@@ -7,16 +7,19 @@ import { ViewComponent } from './children/view/view.component';
 import { ListComponent } from './children/list/list.component';
 import { EditComponent } from './children/edit/edit.component';
 import { BlockedListComponent } from './children/blocked-list/blocked-list.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 const userRoutes: Routes = [
   {
-    path: 'user', component: UserPage,
+    path: 'user',
+    component: UserPage,
+    canActivate: [ AuthGuard ],
     children: [
-      { path: 'list', component: ListComponent },
       { path: 'blocked-list', component: BlockedListComponent },
       { path: 'create', component: CreateComponent },
       { path: 'edit/:id', component: EditComponent },
-      { path: 'view/:id', component: ViewComponent }
+      { path: 'view/:id', component: ViewComponent },
+      { path: '', component: ListComponent },
     ]
   }
 ];
@@ -27,6 +30,6 @@ const userRoutes: Routes = [
     CommonModule,
     RouterModule.forChild(userRoutes)
   ],
-  exports: [ RouterModule ]
+  exports: [RouterModule]
 })
 export class UserRoutingModule { }

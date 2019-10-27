@@ -6,7 +6,7 @@ import { IMenuItem } from '../models/imenu-item';
 @Component({
   selector: 'app-user',
   templateUrl: './user.page.html',
-  styleUrls: ['./user.page.scss'],
+  styleUrls: ['./user.page.scss']
 })
 export class UserPage implements OnInit {
   menu: Set<IMenuItem> = new Set<IMenuItem>();
