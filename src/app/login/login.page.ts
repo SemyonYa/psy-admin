@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DataService } from '../services/data.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { UserData } from '../models/user-data';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginPage implements OnInit {
   constructor(private dataService: DataService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    if (this.authService.authToken.value) {
+    if (this.authService.authData.value) {
       this.router.navigate(['/home']);
     }
     this.form = new FormGroup({
@@ -30,10 +31,10 @@ export class LoginPage implements OnInit {
         .subscribe(
           (answer) => {
             // console.log('login', answer);
-            if (answer != false) {
-              this.authService.login(answer);
-            } else {
+            if (answer === false) {
               this.form.reset();
+            } else {
+              this.authService.login(answer as UserData);
             }
           }
         );

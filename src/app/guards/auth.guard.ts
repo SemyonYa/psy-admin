@@ -12,22 +12,24 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router, private authService: AuthService, private alertCtrl: AlertController) { }
 
   canActivate(): Observable<boolean> {
-    return this.authService.authToken.asObservable().pipe(
-      map((q) => {
-        console.log('auth', q);
-        if (!q) {
-          this.alertCtrl.create({
-            header: 'Нет доступа',
-            message: 'Необходимо авторизоваться.',
-            buttons: ['OK']
-          }).then(alert => alert.present());
+    return this.authService.authData
+      .asObservable()
+      .pipe(
+        map((q) => {
+          console.log('auth', q);
+          if (!q) {
+            this.alertCtrl.create({
+              header: 'Нет доступа',
+              message: 'Необходимо авторизоваться.',
+              buttons: ['OK']
+            }).then(alert => alert.present());
 
-          this.router.navigateByUrl('/login');
-          return false;
-        } else {
-          return true;
-        }
-      })
-    ); // of(this.authService.authToken.value !== '');
+            this.router.navigateByUrl('/login');
+            return false;
+          } else {
+            return true;
+          }
+        })
+      ); // of(this.authService.authToken.value !== '');
   }
 }

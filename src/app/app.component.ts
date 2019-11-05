@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './services/auth.service';
 import { BehaviorSubject } from 'rxjs';
+import { UserData } from './models/user-data';
 
 @Component({
   selector: 'app-root',
@@ -13,29 +14,7 @@ import { BehaviorSubject } from 'rxjs';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  loggedIn = new BehaviorSubject('');
-  // public appPages = [
-  //   {
-  //     title: 'Home',
-  //     url: '/home',
-  //     icon: 'home'
-  //   },
-  //   {
-  //     title: 'List',
-  //     url: '/list',
-  //     icon: 'list'
-  //   },
-  //   {
-  //     title: 'Users',
-  //     url: '/user/list',
-  //     icon: 'people'
-  //   },
-  //   // {
-  //   //   title: 'Вход',
-  //   //   url: '/login',
-  //   //   icon: 'log-in'
-  //   // }
-  // ];
+  authData = new BehaviorSubject<UserData | null>(null);
 
   constructor(
     private platform: Platform,
@@ -50,7 +29,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.loggedIn = this.authService.authToken;
+      this.authData = this.authService.authData;
     });
   }
 

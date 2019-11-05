@@ -14,7 +14,7 @@ export class ViewComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    const id = this.activatedRoute.snapshot.params['id'];
+    const id = this.activatedRoute.snapshot.params.id;
     this.dataService.getUser(id)
       .subscribe(
         (u: User) => {

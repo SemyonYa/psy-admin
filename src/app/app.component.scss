@@ -18,37 +18,37 @@
     }
 }
 
-input {
-    padding: 6px;
-    border-radius: 4px;
-    font-size: 14px;
-    outline: none;
-    border: solid 1px var(--ion-color-primary-tint);
-    transition: .3s;
+// input {
+//     padding: 6px;
+//     border-radius: 4px;
+//     font-size: 14px;
+//     outline: none;
+//     border: solid 1px var(--ion-color-primary-tint);
+//     transition: .3s;
 
-    &.ng-invalid.ng-touched {
-        border-color: var(--ion-color-danger);
-    }
-}
+//     &.ng-invalid.ng-touched {
+//         border-color: var(--ion-color-danger);
+//     }
+// }
 
-input:focus {
-    border-color: var(--ion-color-primary-tint);
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .3);
-}
+// input:focus {
+//     border-color: var(--ion-color-primary-tint);
+//     box-shadow: 0 0 3px 0 rgba(0, 0, 0, .3);
+// }
 
-label {
-    margin-top: 4px;
-}
+// label {
+//     margin-top: 4px;
+// }
 
-button,
-.button {
-    padding: 4px 24px;
-    border-radius: 4px;
-    font-size: 11px;
-    outline: none;
-    border: solid 1px var(--ion-color-primary);
-    margin: 4px;
-}
+// button,
+// .button {
+//     padding: 4px 24px;
+//     border-radius: 4px;
+//     font-size: 11px;
+//     outline: none;
+//     border: solid 1px var(--ion-color-primary);
+//     margin: 4px;
+// }
 
 .link {
     cursor: pointer;

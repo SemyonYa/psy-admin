@@ -10,7 +10,7 @@ export class HomePage {
 
   constructor(private auth: AuthService) {}
 
-  token() {
-    this.auth.getToken();
-  }
+  // token() {
+  //   this.auth.getToken();
+  // }
 }

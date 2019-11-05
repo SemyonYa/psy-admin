@@ -11,24 +11,27 @@ import { FormGroup } from '@angular/forms';
 })
 export class EditComponent implements OnInit {
   form: FormGroup;
+  user: User;
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    const id = this.activatedRoute.snapshot.params['id'];
+    const id = this.activatedRoute.snapshot.params.id;
     this.dataService.getUser(id)
       .subscribe(
         (u: User) => {
+          this.user = u;
           this.form = u.editForm();
         }
       );
   }
 
-  submitForm() {
+  submit() {
     this.dataService.editUser(this.form.value)
       .subscribe(
         answer => {
           if (answer != false) {
-            this.router.navigate(['/user/list']);
+            this.dataService.getUsers();
+            this.router.navigate(['/user']);
           }
         }
       );

@@ -19,7 +19,7 @@ export class CreateComponent implements OnInit {
     this.form = User.createForm();
   }
 
-  submitForm() {
+  submit() {
     if (this.form.valid) {
       this.dataService.newUser(this.form.value)
         .subscribe(

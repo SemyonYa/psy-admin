@@ -1,8 +1,19 @@
-<ion-header [routerLink]="['/user']">
-  <ion-toolbar>
-    <ion-title>
-      Организации
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Организации</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="'/user/create'">
+        Добавить организацию
+        <ion-icon slot="end" name="add"></ion-icon>
+      </ion-button>
+      <ion-button [routerLink]="'/user/blocked-list'">
+        Заблокированные
+        <ion-icon slot="end" name="lock"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

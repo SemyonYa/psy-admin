@@ -44,4 +44,8 @@ export class ResetPasswordComponent implements OnInit {
       );
   }
 
+  close() {
+    this.bsModalRef.hide();
+  }
+
 }

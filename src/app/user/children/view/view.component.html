@@ -1,9 +1,20 @@
-<div *ngIf="user" class="wrap">
+<ion-header *ngIf="user">
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{user.organizationName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="user">
+  <pre>{{user | json}}</pre>
+</ion-content>
+
+<!-- <div *ngIf="user" class="wrap">
   <h3>{{user.organizationName}}</h3>
   <pre>{{user | json}}</pre>
   
   <h4>Пользователи организации</h4>
-  <!-- <ion-icon name="person-add"></ion-icon> -->
   <table>
     <tr>
       <td>a</td>
@@ -16,4 +27,4 @@
         <td>{{child.parentUserId}}</td>
       </tr>
   </table>
-</div>
+</div> -->

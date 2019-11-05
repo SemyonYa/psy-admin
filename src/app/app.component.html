@@ -17,7 +17,7 @@
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
-          <ion-menu-toggle auto-hide="false" *ngIf="loggedIn.value">
+          <ion-menu-toggle auto-hide="false" *ngIf="authData.value">
             <ion-item [routerDirection]="'root'" [routerLink]="['/user']" routerLinkActive="active-menu-item">
               <ion-icon slot="start" [name]="'people'"></ion-icon>
               <ion-label>
@@ -25,15 +25,15 @@
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
-          <ion-menu-toggle auto-hide="false" *ngIf="loggedIn.value">
-              <ion-item [routerDirection]="'root'" [routerLink]="['/report']" routerLinkActive="active-menu-item">
-                <ion-icon slot="start" [name]="'paper'"></ion-icon>
-                <ion-label>
-                  Отчёты
-                </ion-label>
-              </ion-item>
-            </ion-menu-toggle>
-          <ion-menu-toggle auto-hide="false" *ngIf="!loggedIn.value">
+          <ion-menu-toggle auto-hide="false" *ngIf="authData.value">
+            <ion-item [routerDirection]="'root'" [routerLink]="['/report']" routerLinkActive="active-menu-item">
+              <ion-icon slot="start" [name]="'paper'"></ion-icon>
+              <ion-label>
+                Отчёты
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false" *ngIf="!authData.value">
             <ion-item [routerDirection]="'root'" [routerLink]="['/login']" routerLinkActive="active-menu-item">
               <ion-icon slot="start" [name]="'log-in'"></ion-icon>
               <ion-label>
@@ -41,11 +41,11 @@
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
-          <ion-menu-toggle auto-hide="false" class="link" *ngIf="loggedIn.value">
+          <ion-menu-toggle auto-hide="false" class="link" *ngIf="authData.value">
             <ion-item (click)="logout()">
               <ion-icon slot="start" [name]="'log-out'"></ion-icon>
               <ion-label>
-                Выход (Иванов И.И.) (<span>{{loggedIn.value}}</span> )
+                Выход ({{authData.value.login}})
               </ion-label>
             </ion-item>
           </ion-menu-toggle>

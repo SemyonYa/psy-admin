@@ -26,7 +26,8 @@ export class BlockedListComponent implements OnInit {
     .subscribe(
       (answer) => {
         if (answer != false) {
-          this.router.navigate(['/user/list']);
+          this.dataService.getUsers();
+          this.router.navigate(['/user']);
         }
       }
     );
