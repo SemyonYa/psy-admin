@@ -1,82 +1,34 @@
 <ion-header>
-  <ion-toolbar color="secondary">
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Заблокированные</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12">
-        <table>
-          <thead>
-            <tr>
-              <td>№</td>
-              <td>ID</td>
-              <td>Организация</td>
-              <td>Логин</td>
-              <td>E-mail</td>
-              <td>Телефон</td>
-              <td>Кол-во</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tr *ngFor="let user of users; let i = index">
-            <td>{{i + 1}}</td>
-            <td>{{user.id}}</td>
-            <td>{{user.organizationName}}</td>
-            <td>{{user.login}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.phone}}</td>
-            <td>{{user.specialistsQuantity}}</td>
-            <td>
-              <ion-icon name="eye" [routerLink]="['/user/view/' + user.id]"></ion-icon>
-              <ion-icon name="unlock" (click)="unlock(user.id)"></ion-icon>
-            </td>
-          </tr>
-        </table>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content>
-
-
-<!-- <div class="wrap">
-  <h3>Список заблокированных пользователей</h3>
-  <ion-grid>
+    <ion-toolbar color="medium">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Заблокированные ({{users.length}})</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-grid>
       <ion-row>
         <ion-col size="12">
-          <table>
-            <thead>
-              <tr>
-                <td>№</td>
-                <td>ID</td>
-                <td>Организация</td>
-                <td>Логин</td>
-                <td>E-mail</td>
-                <td>Телефон</td>
-                <td>Кол-во</td>
-                <td></td>
-              </tr>
-            </thead>
-            <tr *ngFor="let user of users; let i = index">
-              <td>{{i + 1}}</td>
-              <td>{{user.id}}</td>
-              <td>{{user.organizationName}}</td>
-              <td>{{user.login}}</td>
-              <td>{{user.email}}</td>
-              <td>{{user.phone}}</td>
-              <td>{{user.specialistsQuantity}}</td>
-              <td>
-                <ion-icon name="eye" [routerLink]="['/user/view/' + user.id]"></ion-icon>
-                <ion-icon name="create" (click)="edit(user.id)"></ion-icon>
-                <ion-icon name="key" (click)="openResetPasswordModal(user.id, user.organizationName)"></ion-icon>
-              </td>
-            </tr>
-          </table>
+          <ion-list>
+            <ion-item lines="full" *ngFor="let user of users; let i = index">
+              <ion-avatar>
+                <img [src]="'/assets/icon/logo.svg'" />
+              </ion-avatar>
+              <ion-label>
+                <h2>{{user.organizationName}}</h2>
+                <div>
+                  <ion-button color="danger" fill="outline" routerDirection="forward" shape="round" [routerLink]="['/user/' + user.id]">
+                    <ion-icon slot="icon-only" name="eye"></ion-icon>
+                  </ion-button>
+                  <ion-button color="danger" fill="outline" shape="round" (click)="unlock(user.id)">
+                      <ion-icon name="unlock"></ion-icon>
+                  </ion-button>
+                </div>
+              </ion-label>
+            </ion-item>
+          </ion-list>
         </ion-col>
       </ion-row>
     </ion-grid>
-</div> -->
+  </ion-content>

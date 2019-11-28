@@ -12,4 +12,8 @@ export class ReportPage implements OnInit {
   ngOnInit() {
   }
 
+  show(id) {
+    alert('Show report ' + id);
+  }
+
 }

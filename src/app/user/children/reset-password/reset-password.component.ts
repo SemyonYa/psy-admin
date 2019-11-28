@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,12 +14,13 @@ export class ResetPasswordComponent implements OnInit {
   title: string;
   userId: number;
   result: { text: string, class: string};
-  constructor(public bsModalRef: BsModalRef, private dataService: DataService) { }
+  constructor(private dataService: DataService, private modalController: ModalController) { }
 
   ngOnInit() {
     this.form = new FormGroup({
       userId: new FormControl(this.userId),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)])
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
   }
 
@@ -33,7 +35,7 @@ export class ResetPasswordComponent implements OnInit {
               class: 'alert-success',
               text: 'Успешно изменен'
             };
-            setTimeout(() => this.bsModalRef.hide(), 3000);
+            setTimeout(() => this.modalController.dismiss(), 3000);
           } else {
             this.result = {
               class: 'alert-danger',
@@ -45,7 +47,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   close() {
-    this.bsModalRef.hide();
+    this.modalController.dismiss();
   }
 
 }

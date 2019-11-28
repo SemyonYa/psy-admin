@@ -18,7 +18,7 @@ const userRoutes: Routes = [
       { path: 'blocked-list', component: BlockedListComponent },
       { path: 'create', component: CreateComponent },
       { path: 'edit/:id', component: EditComponent },
-      { path: 'view/:id', component: ViewComponent },
+      { path: ':id', component: ViewComponent },
       { path: '', component: ListComponent },
     ]
   }

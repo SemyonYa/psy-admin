@@ -32,6 +32,8 @@ export class EditComponent implements OnInit {
           if (answer != false) {
             this.dataService.getUsers();
             this.router.navigate(['/user']);
+          } else {
+            alert();
           }
         }
       );

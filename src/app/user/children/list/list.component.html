@@ -1,43 +1,47 @@
 <ion-header>
   <ion-toolbar color="secondary">
+    <ion-buttons slot="end">
+      <ion-button fill="outline" [routerLink]="'/user/create'">
+        Добавить организацию
+        <ion-icon slot="end" name="add"></ion-icon>
+      </ion-button>
+      <ion-button fill="outline" [routerLink]="'/user/blocked-list'">
+        Заблокированные
+        <ion-icon slot="end" name="lock"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Список организаций</ion-title>
+    <ion-title>Список организаций ({{(users | async).length}})</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-grid>
     <ion-row>
       <ion-col size="12">
-        <table>
-          <thead>
-            <tr>
-              <td>№</td>
-              <td>ID</td>
-              <td>Организация</td>
-              <td>Логин</td>
-              <td>E-mail</td>
-              <td>Телефон</td>
-              <td>Кол-во</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tr *ngFor="let user of users | async; let i = index">
-            <td>{{i + 1}}</td>
-            <td>{{user.id}}</td>
-            <td>{{user.organizationName}}</td>
-            <td>{{user.login}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.phone}}</td>
-            <td>{{user.specialistsQuantity}}</td>
-            <td>
-              <ion-icon name="eye" [routerLink]="['/user/view/' + user.id]"></ion-icon>
-              <ion-icon name="create" (click)="edit(user.id)"></ion-icon>
-              <ion-icon name="key" (click)="openResetPasswordModal(user.id, user.organizationName)"></ion-icon>
-            </td>
-          </tr>
-        </table>
+        <ion-list>
+          <ion-item lines="full" *ngFor="let user of users | async; let i = index">
+            <ion-avatar>
+              <img [src]="'/assets/icon/logo.svg'" />
+            </ion-avatar>
+            <ion-label>
+              <h2>{{user.organizationName}}</h2>
+              <div>
+                <!-- <ion-button (click)="qwe()" routerDirection="forward" color="primary" size="large">  </ion-button> -->
+                <ion-button fill="outline" routerDirection="forward" shape="round" [routerLink]="['/user/' + user.id]">
+                  <ion-icon slot="icon-only" name="eye"></ion-icon>
+                </ion-button>
+                <ion-button fill="outline" shape="round" [routerLink]="['/user/edit/' + user.id]">
+                  <ion-icon slot="icon-only" name="create"></ion-icon>
+                </ion-button>
+                <ion-button fill="outline" shape="round" (click)="openResetPasswordModal(user.id, user.organizationName)">
+                  <ion-icon slot="icon-only" name="key"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-label>
+          </ion-item>
+        </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -1,18 +1,21 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Отчёты</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <div class="report-list">
-    <ion-card color="primary" *ngFor="let r of [1, 2, 3, 4]">
+    <ion-card *ngFor="let r of [1, 2, 3, 4]"
+      [ngStyle]="{border: 'solid 1px var(--ion-color-primary)', borderRadius: '10px', maxWidth: '350px'}">
       <ion-card-header>
-        <ion-card-subtitle>This is report #{{r}}</ion-card-subtitle>
-        <ion-card-title>Report {{r}}</ion-card-title>
+        <ion-card-title>
+          Report {{r}}
+          <ion-button fill="clear" shape="round" (click)="show(r)">
+            <ion-icon name="eye" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, sunt.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis amet reprehenderit veritatis! Non optio,
+        doloremque consequatur quibusdam aliquam, eaque culpa fugiat repellendus repudiandae quas placeat facilis ad
+        illum architecto perspiciatis.Eaque ratione eum quibusdam dolorem ea quos asperiores iste? Ut delectus autem
+        minus qui repellat nam ex quia, et vero totam veritatis saepe. Suscipit, distinctio doloremque labore commodi et
+        nesciunt?
       </ion-card-content>
     </ion-card>
   </div>

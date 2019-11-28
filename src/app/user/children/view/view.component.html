@@ -7,24 +7,42 @@
   </ion-toolbar>
 </ion-header>
 <ion-content *ngIf="user">
-  <pre>{{user | json}}</pre>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          <span>Наименование организации: </span><b>{{user.organizationName}}</b>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <span>E-mail: </span><b>{{user.email}}</b>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-item>
+      <ion-label>
+        <span>Телефон: </span><b>{{user.phone}}</b>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <span>Количество специалистов: </span><b>{{user.specialistsQuantity}}</b>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <span>Логин: </span><b>{{user.login}}</b>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <span>Активность: </span>
+        <b [ngStyle]="{padding: '10px'}">
+          <ion-icon *ngIf="user.blocked" color="danger" name="close"></ion-icon>
+          <ion-icon *ngIf="!user.blocked" color="success" name="checkmark"></ion-icon>
+        </b>
+      </ion-label>
+    </ion-item>
+  </ion-card>
 </ion-content>
-
-<!-- <div *ngIf="user" class="wrap">
-  <h3>{{user.organizationName}}</h3>
-  <pre>{{user | json}}</pre>
-  
-  <h4>Пользователи организации</h4>
-  <table>
-    <tr>
-      <td>a</td>
-      <td>b</td>
-      <td>c</td>
-    </tr>
-    <tr *ngFor="let child of children">
-        <td>{{child.login}}</td>
-        <td>{{child.organizationName}}</td>
-        <td>{{child.parentUserId}}</td>
-      </tr>
-  </table>
-</div> -->

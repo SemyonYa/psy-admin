@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  host: 'http://psy-api:100' // 'http://apijs.injini.ru'
+  host: 'http://apijs.injini.ru' // 'http://psy-api:100'
 };
 
 /*
